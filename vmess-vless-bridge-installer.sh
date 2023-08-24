@@ -32,7 +32,7 @@ function installRequriment() {
 }
 
 function downloadV2() {
-  mkdir -p /opt/vmess
+  mkdir -p /opt/vmess/bbc
   mkdir -p /var/log/v2ray/
   cd /opt/vmess
   FILE=/opt/vmess/v2ray
