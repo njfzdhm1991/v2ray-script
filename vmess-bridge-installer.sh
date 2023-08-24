@@ -6,11 +6,7 @@ function isRoot() {
     return 1
   fi
 }
-function tunAvailable() {
-  if [ ! -e /dev/net/tun ]; then
-    return 1
-  fi
-}
+
 function initialCheck() {
   if ! isRoot; then
     echo "Sorry, you need to run this as root"
@@ -21,7 +17,11 @@ function initialCheck() {
     exit 1
   fi
 }
-
+function tunAvailable() {
+  if [ ! -e /dev/net/tun ]; then
+    return 1
+  fi
+}
 function updateOs() {
   apt-get update
   apt-get dist-upgrade -y
@@ -212,15 +212,7 @@ function getUpStreamInfo() {
   read -rp "Service Suffix: " -e -i "x1" VSUFFIX
 
 }
-getUpStreamInfo
-initialCheck
-updateOs
-installRequriment
-downloadV2
-cd /opt/vmess
-getIP
-choosePort
-makeConfig
+
 makeService
 echo 'Your vmess config: '
 echo ' '
